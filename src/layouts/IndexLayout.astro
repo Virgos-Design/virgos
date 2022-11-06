@@ -1,14 +1,12 @@
 ---
 import Layout from '~/layouts/BaseLayout.astro';
-import Header from '~/sections/Header.astro';
 import Footer from '~/sections/Footer.astro';
-
 const { meta } = Astro.props;
 ---
 
 <Layout {meta}>
-	<Header />
-	<main>
+	<slot name="hero" />
+	<main class="">
 		<slot />
 	</main>
 	<Footer />

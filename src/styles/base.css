@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "theme.css";
 
 @layer components {
 	.btn {
@@ -25,4 +26,9 @@
 
 [data-aw-toggle-menu].expanded g > path:last-child {
 	@apply rotate-45 translate-y-[-8px] translate-x-[14px];
+}
+
+.gradient-text {
+  @apply text-transparent bg-clip-text;
+  @apply bg-gradient-to-br from-indigo-500 via-fuchsia-500 to-pink-500;
 }

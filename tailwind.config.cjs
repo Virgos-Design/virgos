@@ -6,39 +6,48 @@ module.exports = {
 	theme: {
 		extend: {
 			colors: {
-				primary: colors.blue,
-				secondary: colors.pink,
+				primary: 'var(--color-primary)',
+				secondary: 'var(--color-secondary)',
 			},
 			fontFamily: {
 				sans: ["'InterVariable'", ...defaultTheme.fontFamily.sans],
 			},
 		},
 	},
-	plugins: [require('@tailwindcss/typography')],
+	plugins: [require('@tailwindcss/typography'), require('tailwindcss-fluid-type')],
 	darkMode: 'class',
 };
 
 /* 
-
   Alternative tailwind.config.js
-  
-  NOTE: Add this fonts to <head>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700&display=swap" rel="stylesheet" />
 */
 
-// module.exports = {
-//   content: ["./src/**/*.{astro,html,js,jsx,md,svelte,ts,tsx,vue}"],
-//   theme: {
-//     extend: {
-//       colors: {
-//         primary: colors.cyan,
-//         secondary: colors.lime,
-//       },
-//       fontFamily: {
-//         sans: ["'Nunito'", ...defaultTheme.fontFamily.sans],
-//       },
-//     },
-//   },
-//   plugins: [require("@tailwindcss/typography")],
-//   darkMode: "class",
-// };
+//module.exports = {
+//  content: ["./src/**/*.{astro,html,js,jsx,svelte,ts,tsx,vue}"],
+//  theme: {
+//    extend: {
+//      fontFamily: {
+//        sans: ["Inter", ...defaultTheme.fontFamily.sans],
+//      },
+//      colors: {
+//        primary: "var(--color-primary)",
+//        secondary: "var(--color-secondary)",
+//      },
+//      textColor: {
+//        default: "var(--color-text)",
+//        offset: "var(--color-text-offset)",
+//      },
+//      backgroundColor: {
+//        default: "var(--color-background)",
+//        offset: "var(--color-background-offset)",
+//      },
+//      borderColor: {
+//        default: "var(--color-border)",
+//      },
+//    },
+//  },
+//  corePlugins: {
+//    fontSize: false,
+//  },
+//  plugins: [require("tailwindcss-fluid-type")],
+//};

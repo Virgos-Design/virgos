@@ -1,17 +1,17 @@
 ---
 import { SITE } from '~/config.mjs';
 import { getCanonical, getHomePermalink } from '~/utils/permalinks';
-import Layout from '~/layouts/PageLayout.astro';
+import Layout from '~/layouts/IndexLayout.astro';
 
-import Hero from '~/components/widgets/Hero.astro';
-import Features from '~/components/widgets/Features.astro';
-import Features2 from '~/components/widgets/Features2.astro';
-import Steps from '~/components/widgets/Steps.astro';
-import Features3 from '~/components/widgets/Features3.astro';
+import Hero from '~/sections/Hero.astro';
+import Features from '~/sections/Features.astro';
+import Features2 from '~/sections/Features2.astro';
+import Steps from '~/sections/Steps.astro';
+import Features3 from '~/sections/Features3.astro';
 import HighlightedPosts from '~/components/blog/HighlightedPosts.astro';
-import FAQs from '~/components/widgets/FAQs.astro';
-import Stats from '~/components/widgets/Stats.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
+import FAQs from '~/sections/FAQs.astro';
+import Stats from '~/sections/Stats.astro';
+import CallToAction from '~/sections/CallToAction.astro';
 
 const meta = {
 	title: SITE.title,
@@ -21,7 +21,7 @@ const meta = {
 ---
 
 <Layout {meta}>
-	<Hero />
+	<Hero slot="hero"/>
 	<Features />
 	<Steps />
 	<Features2 />
