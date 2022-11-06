@@ -7,31 +7,29 @@ import ToggleMenu from '~/components/core/ToggleMenu.astro';
 import { getPermalink, getBlogPermalink, getHomePermalink } from '~/utils/permalinks';
 ---
 
-<header id="page-header" class="fixed z-20 flex-none mx-auto w-full">
-	<!-- menu bypass -->
+<header
+	class="sticky top-0 z-40 flex-none mx-auto w-full bg-white md:bg-white/90 dark:bg-slate-900 dark:md:bg-slate-900/90 md:backdrop-blur-sm border-b dark:border-b-0"
+	id="header"
+>
 	<a
 		id="skip-to-main"
 		href="#main-content"
 		class="fixed inset-0 text-center bg-primary text-white border-b-2 border-white border-solid h-fit p-2 -translate-y-full focus:translate-y-0 ease-in-out duration-300"
 		>Skip to Content</a
 	>
-	<!-- END menu bypass -->
-
-	<div class="py-3 px-3 w-full lg:flex lg:justify-between lg:px-4">
+	<div class="py-3 px-3 mx-auto w-full md:flex md:justify-between max-w-6xl md:px-4">
 		<div class="flex justify-between">
-			<a id="brand" aria-label="logo" class="invisible items-center gap-3 flex" href={getHomePermalink()}>
-				<h1 class="sr-only">Virgos Design</h1>
+			<a class="flex items-center" href={getHomePermalink()}>
 				<Logo />
 			</a>
-			<div class="flex items-center lg:hidden justify-self-end">
+			<div class="flex items-center md:hidden">
 				<ToggleTheme />
 				<ToggleMenu />
 			</div>
 		</div>
 		<nav
-			class="bg-primary/30 backdrop-blur-md mt-6 lg:mt-0 lg:mb-0 rounded-md lg:bg-transparent lg:backdrop-blur-none lg:rounded-none lg:margin-0 items-center w-full lg:w-auto hidden lg:flex text-white text-lg font-semibold tracking-wide h-screen lg:h-auto"
+			class="items-center w-full md:w-auto hidden md:flex text-gray-600 dark:text-slate-200 h-screen md:h-auto"
 			aria-label="Main navigation"
-			id="menu"
 		>
 			<ul class="flex flex-col pt-8 md:pt-0 md:flex-row md:self-center w-full md:w-auto text-xl md:text-base">
 				<li>
@@ -83,34 +81,3 @@ import { getPermalink, getBlogPermalink, getHomePermalink } from '~/utils/permal
 		</nav>
 	</div>
 </header>
-
-<script>
-	const header: HTMLElement = document.getElementById('page-header');
-	const nav: HTMLElement = document.getElementById('menu');
-	const menuToggle: HTMLElement = document.getElementById('menu-toggle');
-	const brand: HTMLElement = document.getElementById('brand');
-	const hero: HTMLElement = document.getElementById('hero');
-	const page = document.documentElement;
-
-	document.addEventListener('scroll', () => {
-		const d = hero.offsetHeight - (page.scrollTop + header.offsetHeight);
-
-		if (d < 0) {
-			brand.classList.add('visible');
-			brand.classList.remove('invisible');
-			header.classList.add('backdrop-blur-md', 'bg-white/30', 'border-b', 'border-white');
-			nav.classList.remove('text-white');
-			nav.classList.add('text-[#321A81]');
-			menuToggle.classList.remove('text-white');
-			menuToggle.classList.add('text-[#321A81]');
-		} else {
-			brand.classList.add('invisible');
-			brand.classList.remove('visible');
-			header.classList.remove('backdrop-blur-md', 'bg-white/30', 'border-b', 'border-white');
-			nav.classList.remove('text-[#321A81]');
-			nav.classList.add('text-white');
-			menuToggle.classList.remove('text-[#321A81]');
-			menuToggle.classList.add('text-white');
-		}
-	});
-</script>
