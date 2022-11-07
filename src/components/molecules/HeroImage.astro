@@ -1,21 +1,15 @@
 ---
-import { Picture } from "@astrojs/image/components";
+import { Picture } from '@astrojs/image/components';
 
 export interface Props {
-  imageSrc: string;
+	imageSrc: string;
 	alt: string;
 }
 
 const { imageSrc, imageAlt } = Astro.props;
 
 const widths = [450, 800, 1200];
-const sizes = "100vw";
+const sizes = '100vw';
 ---
 
-<Picture
-  class="object-cover w-full h-full"
-  src={imageSrc}
-  widths={widths}
-  sizes={sizes}
-	alt={imageAlt}
-/>
+<Picture class="object-cover w-full h-full" src={imageSrc} widths={widths} sizes={sizes} alt={imageAlt} />

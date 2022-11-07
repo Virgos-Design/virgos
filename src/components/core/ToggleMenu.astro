@@ -10,9 +10,6 @@ const {
 } = Astro.props;
 ---
 
-<!-- <button id="toggle-menu" type="button" class={className} aria-label={label} data-aw-toggle-menu>
-	<Icon name={iconName} class={iconClass} optimize={false} />
-</button> -->
 <input aria-hidden="true" type="checkbox" name="toggle_nav" id="toggle_nav" class="hidden peer" />
 <div class="relative flex items-center lg:hidden max-h-10">
 	<label role="button" for="toggle_nav" aria-label="humburger" id="hamburger" class="relative p-6 -mr-6">
@@ -30,6 +27,9 @@ const {
 		</div>
 	</label>
 </div>
+<!-- <button id="toggle-menu" type="button" class={className} aria-label={label} data-aw-toggle-menu>
+	<Icon name={iconName} class={iconClass} optimize={false} />
+</button> -->
 
 <style>
 	#toggle_nav:checked ~ div #hamburger #line {

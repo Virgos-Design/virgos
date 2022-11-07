@@ -3,37 +3,28 @@ import { Icon } from 'astro-icon';
 import Logo from '~/components/atoms/Logo.astro';
 import ToggleTheme from '~/components/core/ToggleTheme.astro';
 import ToggleMenu from '~/components/core/ToggleMenu.astro';
-
+import Container from '~/layouts/Container.astro';
 import { getPermalink, getBlogPermalink, getHomePermalink } from '~/utils/permalinks';
 ---
 
-<header id="page-header" class="">
-	<a
-		id="skip-to-main"
-		href="#main-content"
-		class="fixed inset-0 text-center bg-primary text-white border-b-2 border-white border-solid h-fit p-2 -translate-y-full focus:translate-y-0 ease-in-out duration-300"
-		>Skip to Content</a
-	>
-	<nav id="menu" class="z-10 w-full absolute">
-		<div class="max-w-7xl mx-auto px-6 py-8 md:px-12 xl:px-6">
-			<div class="flex flex-wrap items-center justify-between py-2 gap-6 md:py-4 md:gap-0 relative">
-				<div class="relative z-20 w-full flex justify-between lg:w-max md:px-0">
-					<a id="brand" href="#" aria-label="logo" class="flex space-x-2 items-center">
-						<div aria-hidden="true" class="flex space-x-1">
-							<div class="h-4 w-4 rounded-full bg-gray-900 dark:bg-white"></div>
-							<div class="h-6 w-2 bg-primary"></div>
-						</div>
-						<h1 class="sr-only">Virgos Design</h1>
-						<Logo />
-					</a>
-					<ToggleMenu />
-				</div>
-				<div
-					aria-hidden="true"
-					class="fixed z-10 inset-0 h-screen w-screen bg-white/70 backdrop-blur-2xl origin-bottom scale-y-0 transition duration-500 peer-checked:origin-top peer-checked:scale-y-100 lg:hidden dark:bg-gray-900/70"
-				>
-				</div>
-				<div
+<header
+	id="page-header"
+	class="sticky top-0 z-40 flex-none mx-auto w-full bg-white md:bg-white/80 dark:bg-slate-900 dark:md:bg-slate-900/80 md:backdrop-blur-sm border-b dark:border-b-0"
+>
+	<div class="flex flex-wrap items-center justify-between py-2 gap-6 md:py-4 md:gap-0 relative">
+		<div class="relative z-20 w-full flex justify-between lg:w-max md:px-0">
+			<Logo />
+			<div class="relative flex items-center lg:hidden max-h-10">
+				<ToggleTheme />
+				<ToggleMenu />
+			</div>
+		</div>
+		<div
+			aria-hidden="true"
+			class="fixed z-10 inset-0 h-screen w-screen bg-white/70 backdrop-blur-2xl origin-bottom scale-y-0 transition duration-500 peer-checked:origin-top peer-checked:scale-y-100 lg:hidden dark:bg-gray-900/70"
+		>
+		</div>
+		<div
 					class="flex-col z-20 flex-wrap gap-6 p-8 rounded-3xl border border-gray-100 bg-white shadow-2xl shadow-gray-600/10 justify-end w-full invisible opacity-0 translate-y-1 absolute top-full left-0 transition-all duration-300 scale-95 origin-top lg:relative lg:scale-100 lg:peer-checked:translate-y-0 lg:translate-y-0 lg:flex lg:flex-row lg:items-center lg:gap-0 lg:p-0 lg:bg-transparent lg:w-7/12 lg:visible lg:opacity-100 lg:border-none peer-checked:scale-100 peer-checked:opacity-100 peer-checked:visible lg:shadow-none dark:shadow-none dark:bg-gray-800 dark:border-gray-700"
 				>
 					<div class="text-gray-600 dark:text-gray-300 lg:pr-4 lg:w-auto w-full lg:pt-0">
@@ -75,35 +66,98 @@ import { getPermalink, getBlogPermalink, getHomePermalink } from '~/utils/permal
 						</a>
 					</div>
 				</div>
+	</div>
+
+	<!-- <div class="py-3 px-3 w-full md:flex md:justify-between md:px-4">
+		<div class="flex justify-between">
+			<Logo />
+			<div class="flex items-center justify-self-end">
+				<ToggleTheme />
+				<ToggleMenu />
 			</div>
 		</div>
-	</nav>
+		<nav
+			class="items-center w-full md:w-auto hidden md:flex text-gray-600 dark:text-slate-200 h-screen md:h-auto"
+			aria-label="Main navigation"
+			id="menu"
+		>
+			<ul
+				class="flex flex-col pt-8 md:pt-0 md:flex-row md:self-center collapse w-full md:w-auto collapsed text-xl md:text-base"
+			>
+				<li>
+					<a
+						class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
+						href="#">Facility</a
+					>
+				</li>
+				<li>
+					<a
+						class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
+						href={getPermalink('useful-resources-to-create-websites', 'post')}
+						>Resources
+					</a>
+				</li>
+				<li>
+					<a
+						class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
+						href={getBlogPermalink()}>Enrollment</a
+					>
+				</li>
+				<li>
+					<a
+						class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
+						href={getBlogPermalink()}>Contact</a
+					>
+				</li>
+				<li class="md:hidden">
+					<a
+						class="font-bold hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
+						href="https://www.facebook.com/bluffsthinkers/"
+						target="_blank"
+					>
+						<Icon name="tabler:brand-facebook" class="w-5 h-5" />
+						Facebook
+					</a>
+				</li>
+			</ul>
+			<div class="md:self-center flex items-center mb-4 md:mb-0 ml-2">
+				<div class="hidden items-center md:flex">
+					<ToggleTheme iconClass="w-5 h-5" />
+					<a
+						class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+						aria-label="RSS Feed"
+						href="/rss.xml"
+					>
+						<Icon name="tabler:rss" class="w-5 h-5" />
+					</a>
+					<a
+						href="https://www.facebook.com/bluffsthinkers/"
+						target="_blank"
+						class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5"
+						aria-label="Bluff's Little Thinkers Facebook"
+					>
+						<Icon name="tabler:brand-facebook" class="w-5 h-5" />
+					</a>
+				</div>
+			</div>
+		</nav>
+	</div> -->
 </header>
-
-<style>
-	#toggle_nav:checked ~ div #hamburger #line {
-		@apply rotate-45 translate-y-1.5;
-	}
-
-	#toggle_nav:checked ~ div #hamburger #line2 {
-		@apply -rotate-45 -translate-y-1;
-	}
-</style>
 
 <script>
 	const header: HTMLElement = document.getElementById('page-header');
 	const nav: HTMLElement = document.getElementById('menu');
-	const menuToggle: HTMLElement = document.getElementById('toggle-menu');
+	/* const menuToggle: HTMLElement = document.getElementById('toggle-menu'); */
 	const brand: HTMLElement = document.getElementById('brand');
 	const hero: HTMLElement = document.getElementById('hero');
 	const page = document.documentElement;
 
-	console.log("header", header)
-	console.log("nav", nav);
-	console.log("menuToggle", menuToggle);
-	console.log("brand", brand)
-  console.log("hero", hero)
-	console.log("page", page)
+	console.log('header', header);
+	console.log('nav', nav);
+	/* 	console.log("menuToggle", menuToggle); */
+	console.log('brand', brand);
+	console.log('hero', hero);
+	console.log('page', page);
 
 	document.addEventListener('scroll', () => {
 		const d = hero.offsetHeight - (page.scrollTop + header.offsetHeight);
@@ -114,16 +168,16 @@ import { getPermalink, getBlogPermalink, getHomePermalink } from '~/utils/permal
 			header.classList.add('backdrop-blur-md', 'bg-white/30', 'border-b', 'border-white');
 			nav.classList.remove('text-white');
 			nav.classList.add('text-[#321A81]');
-			menuToggle.classList.remove('text-white');
-			menuToggle.classList.add('text-[#321A81]');
+			/* 			menuToggle.classList.remove('text-white');
+			menuToggle.classList.add('text-[#321A81]'); */
 		} else {
 			brand.classList.add('invisible');
 			brand.classList.remove('visible');
 			header.classList.remove('backdrop-blur-md', 'bg-white/30', 'border-b', 'border-white');
 			nav.classList.remove('text-[#321A81]');
 			nav.classList.add('text-white');
-			menuToggle.classList.remove('text-[#321A81]');
-			menuToggle.classList.add('text-white');
+			/* 	menuToggle.classList.remove('text-[#321A81]');
+			menuToggle.classList.add('text-white'); */
 		}
 	});
 </script>
