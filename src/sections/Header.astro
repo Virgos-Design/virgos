@@ -20,10 +20,11 @@ import { getPermalink, getBlogPermalink, getHomePermalink } from '~/utils/permal
 				<ToggleMenu />
 			</div>
 		</div>
-		<div
-			class="flex-col z-20 flex-wrap gap-6 p-8 rounded-3xl border border-gray-100 bg-white shadow-2xl shadow-gray-600/10 justify-end w-full invisible opacity-0 translate-y-1 absolute top-full left-0 transition-all duration-300 scale-95 origin-top lg:relative lg:scale-100 lg:peer-checked:translate-y-0 lg:translate-y-0 lg:flex lg:flex-row lg:items-center lg:gap-0 lg:p-0 lg:bg-transparent lg:w-7/12 lg:visible lg:opacity-100 lg:border-none peer-checked:scale-100 peer-checked:opacity-100 peer-checked:visible lg:shadow-none dark:shadow-none dark:bg-gray-800 dark:border-gray-700"
+		<nav
+			id="navigation"
+			class="flex-col z-20 flex-wrap gap-6 p-8 rounded-3xl border border-gray-100 bg-white shadow-2xl shadow-gray-600/10 justify-end w-full invisible opacity-0 translate-y-1 absolute top-full left-0 transition-all duration-300 scale-95 origin-top lg:relative lg:scale-100 lg:translate-y-0 lg:flex lg:flex-row lg:items-center lg:gap-0 lg:p-0 lg:bg-transparent lg:w-7/12 lg:visible lg:opacity-100 lg:border-none lg:shadow-none dark:shadow-none dark:bg-gray-800 dark:border-gray-700"
 		>
-			<nav id="menu" class="text-gray-600 dark:text-gray-300 lg:pr-4 lg:w-auto w-full lg:pt-0">
+			<div class="text-gray-600 dark:text-gray-300 lg:pr-4 lg:w-auto w-full lg:pt-0">
 				<ul class="tracking-wide font-medium lg:text-sm flex-col flex lg:flex-row gap-6 lg:gap-0">
 					<li>
 						<a href="/#about" class="block md:px-4 transition hover:text-primary">
@@ -46,7 +47,7 @@ import { getPermalink, getBlogPermalink, getHomePermalink } from '~/utils/permal
 						</a>
 					</li>
 				</ul>
-			</nav>
+			</div>
 
 			<div class="mt-12 lg:mt-0">
 				<a
@@ -56,8 +57,9 @@ import { getPermalink, getBlogPermalink, getHomePermalink } from '~/utils/permal
 					<span class="relative text-sm font-semibold text-white">Get Started</span>
 				</a>
 			</div>
+			<!-- Theme Toggle -->
 			<ToggleTheme />
-		</div>
+		</nav>
 	</div>
 
 	<!-- <div class="py-3 px-3 w-full md:flex md:justify-between md:px-4">
@@ -138,8 +140,9 @@ import { getPermalink, getBlogPermalink, getHomePermalink } from '~/utils/permal
 
 <script>
 	const header: HTMLElement = document.getElementById('page-header');
-	const nav: HTMLElement = document.getElementById('menu');
+	const nav: HTMLElement = document.getElementById('navigation');
 	/* const menuToggle: HTMLElement = document.getElementById('toggle-menu'); */
+	const navToggle: HTMLInputElement = document.getElementById('toggle_nav');
 	const brand: HTMLElement = document.getElementById('brand');
 	const hero: HTMLElement = document.getElementById('hero');
 	const page = document.documentElement;
@@ -151,6 +154,18 @@ import { getPermalink, getBlogPermalink, getHomePermalink } from '~/utils/permal
 	console.log('hero', hero);
 	console.log('page', page);
 
+	navToggle.addEventListener('change', function() {
+		if (this.checked) {
+    console.log("Checkbox is checked..");
+		nav.classList.add("lg:translate-y-0", "scale-100", "opacity-100", "visible")
+		nav.classList.remove("invisible")
+  } else {
+    console.log("Checkbox is not checked..");
+		nav.classList.remove("lg:translate-y-0", "scale-100", "opacity-100", "visible")
+		nav.classList.add("invisible")
+	}	
+	})
+
 	document.addEventListener('scroll', () => {
 		const d = hero.offsetHeight - (page.scrollTop + header.offsetHeight);
 		/* if (d < 0) { */
@@ -158,16 +173,12 @@ import { getPermalink, getBlogPermalink, getHomePermalink } from '~/utils/permal
 			/* brand.classList.add('visible');
 			brand.classList.remove('invisible'); */
 			header.classList.add('backdrop-blur-md', 'bg-white/30', 'dark:bg-slate-900/30', 'border-b', 'border-white');
-			nav.classList.remove('text-white');
-			nav.classList.add('text-[#321A81]');
 			/* 			menuToggle.classList.remove('text-white');
 			menuToggle.classList.add('text-[#321A81]'); */
 		} else {
 			/* brand.classList.add('invisible');
 			brand.classList.remove('visible'); */
 			header.classList.remove('backdrop-blur-md', 'bg-white/30', 'dark:bg-slate-900/30', 'border-b', 'border-white');
-			nav.classList.remove('text-[#321A81]');
-			nav.classList.add('text-white');
 			/* 	menuToggle.classList.remove('text-[#321A81]');
 			menuToggle.classList.add('text-white'); */
 		}
