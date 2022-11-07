@@ -9,7 +9,11 @@ const {
 	iconName = 'tabler:menu',
 } = Astro.props;
 ---
-
+<div
+			aria-hidden="true"
+			class="fixed z-10 inset-0 h-screen w-screen bg-white/70 backdrop-blur-2xl origin-bottom scale-y-0 transition duration-500 peer-checked:origin-top peer-checked:scale-y-100 lg:hidden dark:bg-gray-900/70"
+		>
+		</div>
 <input aria-hidden="true" type="checkbox" name="toggle_nav" id="toggle_nav" class="hidden peer" />
 <div class="relative flex items-center lg:hidden max-h-10">
 	<label role="button" for="toggle_nav" aria-label="humburger" id="hamburger" class="relative p-6 -mr-6">
