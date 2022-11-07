@@ -7,10 +7,7 @@ import Container from '~/layouts/Container.astro';
 import { getPermalink, getBlogPermalink, getHomePermalink } from '~/utils/permalinks';
 ---
 
-<header
-	id="page-header"
-	class="sticky top-0 z-40 flex-none mx-auto w-full border-b dark:border-b-0"
->
+<header id="page-header" class="sticky top-0 z-40 flex-none mx-auto w-full border-b dark:border-b-0">
 	<div
 		class="flex flex-wrap items-center justify-between py-2 gap-6 md:py-4 md:gap-0 relative max-w-7xl mx-auto px-6 md:px-12 xl:px-6"
 	>
@@ -154,17 +151,17 @@ import { getPermalink, getBlogPermalink, getHomePermalink } from '~/utils/permal
 	console.log('hero', hero);
 	console.log('page', page);
 
-	navToggle.addEventListener('change', function() {
+	navToggle.addEventListener('change', function () {
 		if (this.checked) {
-    console.log("Checkbox is checked..");
-		nav.classList.add("lg:translate-y-0", "scale-100", "opacity-100", "visible")
-		nav.classList.remove("invisible")
-  } else {
-    console.log("Checkbox is not checked..");
-		nav.classList.remove("lg:translate-y-0", "scale-100", "opacity-100", "visible")
-		nav.classList.add("invisible")
-	}	
-	})
+			console.log('Checkbox is checked..');
+			nav.classList.add('lg:translate-y-0', 'scale-100', 'opacity-100', 'visible');
+			nav.classList.remove('invisible');
+		} else {
+			console.log('Checkbox is not checked..');
+			nav.classList.remove('lg:translate-y-0', 'scale-100', 'opacity-100', 'visible');
+			nav.classList.add('invisible');
+		}
+	});
 
 	document.addEventListener('scroll', () => {
 		const d = hero.offsetHeight - (page.scrollTop + header.offsetHeight);
